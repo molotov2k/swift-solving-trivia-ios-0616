@@ -12,11 +12,26 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
-    /*
-     
-     write your function here
-     
-     */
-
+    func solvingTrivia(dictionary: [String:String]) -> String {
+        
+        for (state, capital) in dictionary {
+            let lowercasedState = state.lowercaseString
+            let lowercasedCapital = capital.lowercaseString
+            
+            let stateLetters = Set(lowercasedState.characters)
+            let capitalLetters = Set(lowercasedCapital.characters)
+            
+            let intersection = stateLetters.intersect(capitalLetters)
+            let spaceSet = Set(" ".characters)
+            
+            if intersection.isEmpty || intersection == spaceSet {
+                return state
+            }
+            
+        }
+        
+        return "No such state!"
+    }
+    
 }
 
